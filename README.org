@@ -1,5 +1,5 @@
 * Eldiet
-A nutrition/diet planning tool for Emacs geek who wants to stay/get in shape.
+A nutrition/diet planning tool for the Emacs geek who wants to stay/get in shape.
 
 
 
