@@ -1,0 +1,13 @@
+* Eldiet
+A nutrition/diet planning tool for Emacs geek who wants to stay/get in shape.
+
+
+
+
+
+
+
+
+* Status
+There is not much to see here at the moment. I just wanted to have an initial repository to be able to work on
+this occasionally.
