@@ -11,7 +11,7 @@
 
 ;;; Code:
 (require 'org)
-
+(require 'helm)
 
 
 (provide 'eldiet)
