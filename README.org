@@ -12,14 +12,21 @@ A nutrition/diet planning tool for the Emacs geek who wants to stay/get in shape
 There is not much to see here at the moment. I just wanted to have an initial repository to be able to work on
 this occasionally.
 
+** TODO Design a database or something alike
+   :LOGBOOK:
+   CLOCK: [2016-06-29 Wed 18:01]
+   :END:
+   <2016-07-15 Fri>
 * Ideas
-
+  
  - Calorie indicator in modeline (like 1454/2500)
  - Database and datastructure need to be figured out -- Maybe the database from [[http://www.gigamonkeys.com/book/practical-a-simple-database.html][this]] lisp tutorial will help
  - Major mode, minor mode, write only window? All of them?
  - Use capture to note a meal
    - Can you run a function when doing a capture, allowing you to interactively
      pick the foods you use for that meal?
+   - Have a helm interface to select the food when running the capture command (looking e.g. like helm-bibtex)
+
  - Integration with an orgmode based shopping list
  - Integration with an orgmode based cookbook
  - Babel based analytics (e.g. inline plots with R/Python or just ascii plots with elisp)
