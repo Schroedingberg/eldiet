@@ -1,0 +1,21 @@
+* Tofu
+  :PROPERTIES:
+  :PROTEIN: 20
+  :FAT: 1
+  :CARBOHYDRATES: 3
+  :ENERGY: 150
+  :END:
+* Broccholi
+  :PROPERTIES:
+  :PROTEIN: 3
+  :FAT: 0
+  :CARBOHYDRATES: 1
+  :ENERGY: 90
+  :END:
+* Sugar
+  :PROPERTIES:
+  :PROTEIN: 0
+  :FAT: 0
+  :CARBOHYDRATES: 100
+  :ENERGY: 450
+  :END:

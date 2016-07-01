@@ -14,6 +14,7 @@
 (require 'helm)
 (require 'helm-easymenu)
 
+
 (defcustom eldiet-database nil
   "The file that contains the nutrition data. This is an org
   file, containing the foods as items with nutritional values as
@@ -22,7 +23,7 @@
   :group 'eldiet
   :type '(choice directory (repeat directory)))
 
-(defcustom eldiet-nutrients '("Protein" "Fat" "Carbohydrates" "Energy")
+(defcustom eldiet-nutrients '("PROTEIN" "FAT" "CARBOHYDRATES" "ENERGY")
   "Defines the data fields of the food database. The standard is macro nutrients (as fractions) and energy as kcal per 100 g. It may also be set to e.g. only one value of interest (Think of carbs for diabetics).")
 
 (defcustom eldiet-cached-candidates nil
@@ -33,13 +34,27 @@ files were last parsed.")
   "The hash of the content of the configured files. If this hash has not changed since the file was last parsed, a cached version of the parsed file is used.")
 
 
-(defun eldiet-add-food-to-database ()
-  "Prompts for a food and the nutrients that are specified in eldiet-nutrients.")
+(defun eldiet-add-food-to-database (food)
+  "Takes a string and adds it to the database as org item."
+  (org-add-props (concat "* " food) '(eldiet-nutrients)))
+
+(defun eldiet-prompt-for-food ()
+  "Prompts for a food and the nutrients that are specified in
+  eldiet-nutrients. It is a wrapper around eldiet add food to database.")
+
+(defun get-string-from-file (filePath nutrients)
+  "Return filePath's file content tailored to obtain property values from the org based database."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (mapcar 'org-property-values nutrients)
+    ;; The parser needs to be transformed to return alists
+    (mapcar ')))
 
 
 (defun eldiet-parse-org-database ()
-  "Parse the entries listed in eldiet-database."
-  )
+  "Parse the entries listed in eldiet-database using get-string-from-file."
+  (setq db-file (get-string-from-file eldiet-database eldiet-nutrients)))
+
 
 (defun eldiet-init ()
   "Check that files specified by user exist."
@@ -50,21 +65,21 @@ files were last parsed.")
 
 
 (defun eldiet-select-food ()
-  "Reads the food-data-file and returns a list of conses, one for each entry."
-  (with-temp-buffer
-    (mapc #'insert-file-contents
-	  (-flatten (list eldiet-database)))
-    (let ((food-hash (secure-hash 'sha256 (current-buffer)))))
-    (unless (and eldiet-cached-candidates
-		 (string= food-hash eldiet-food-hash)))
-    (message "Loading food")
-    ;; This is very under construction.
-    ;; It is made in the style of helm-bibtex-candidates
-    (let* ((entries (eldiet-parse-org-database))))
-    ))
-
+  "The helm dialog you can select the food for a meal from."
+  (interactive)
+  (helm :name "Hello"
+	:buffer "*test*")
+  )
 
 
 (provide 'eldiet)
 ;;; eldiet.el ends here
+
+
+
+
+
+
+
+
 
