@@ -44,11 +44,12 @@ files were last parsed.")
   "Prompts for a food and the nutrients that are specified in
   eldiet-nutrients. It is a wrapper around eldiet add food to database.")
 
-(defun eldiet-get-string-from-file (filePath nutrients)
+(defun eldiet-get-string-from-file (filePath)
   "Return filePath's file content tailored to obtain property values from the org based database."
   (with-temp-buffer
     (insert-file-contents filePath)
-    (setq nutrients-values (mapcar 'org-property-values nutrients))))
+    (goto-char 1)
+    (setq nutrients-values org-entry-properties)))
    
 (defun eldiet-parse-org-database ()
   "Parse the entries listed in eldiet-database using get-string-from-file."
@@ -79,9 +80,16 @@ files were last parsed.")
    (helm :sources '(helm-source-eldiet) :buffer "*helm eldiet select food*")
    ",")))
 
-
-
-
+;;; Experimental
+(define-minor-mode eldiet-capture-mode
+  "Minor mode for special key bindings in a capture buffer.
+So far this is only a copy of org-capture mode, this needs to be customized."
+  nil " Rem" org-capture-mode-map
+  (org-set-local
+   'header-line-format
+   (substitute-command-keys
+    "\\<org-capture-mode-map>Capture buffer.  Finish \\[org-capture-finalize], \
+refile \\[org-capture-refile], abort \\[org-capture-kill].")))
 
 (provide 'eldiet)
 ;;; eldiet.el ends here
