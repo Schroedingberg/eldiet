@@ -49,7 +49,8 @@ files were last parsed.")
    
 (defun eldiet-parse-org-database ()
   "Parse the entries listed in eldiet-database using get-string-from-file."
-  (setq db-file (eldiet-get-string-from-file eldiet-database eldiet-nutrients))
+  (org-map-entries
+    (lambda () (org-entry-properties nil nil "foo")))
   )
 
 
