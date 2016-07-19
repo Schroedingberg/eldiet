@@ -41,17 +41,11 @@ files were last parsed.")
   "Prompts for a food and the nutrients that are specified in
   eldiet-nutrients. It is a wrapper around eldiet add food to database.")
 
-(defun eldiet-get-string-from-file (filePath nutrients)
-  "Return filePath's file content tailored to obtain property values from the org based database."
+(defun eldiet-parse-org-database (filePath)
+  "Parse the entries listed in eldiet-database using get-string-from-file."
   (with-temp-buffer
     (insert-file-contents filePath)
-    (setq nutrients-values (mapcar 'org-property-values nutrients))))
-   
-(defun eldiet-parse-org-database ()
-  "Parse the entries listed in eldiet-database using get-string-from-file."
-  (org-map-entries
-    (lambda () (org-entry-properties nil nil "foo")))
-  )
+    (org-element-parse-buffer)))
 
 
 (defun eldiet-init ()
