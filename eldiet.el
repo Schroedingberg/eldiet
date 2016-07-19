@@ -15,13 +15,10 @@
 (require 'org)
 (require 'helm)
 (require 'helm-easymenu)
-
+(require 'org-capture)
 
 (defcustom eldiet-database nil
-  "The file that contains the nutrition data. This is an org
-  file, containing the foods as items with nutritional values as
-  properties. This might allow as well to reference a file with
-  recipes to be able to query favourite recipes by a food."
+  "The file that contains the nutrition data. This is an org file, containing the foods as items with nutritional values as properties. This might allow as well to reference a file with recipes to be able to query favourite recipes by a food."
   :group 'eldiet
   :type '(choice directory (repeat directory)))
 
