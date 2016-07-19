@@ -48,19 +48,21 @@ files were last parsed.")
     (org-element-parse-buffer)))
 
 
+(setq helm-source-eldiet
+      '((name . "FOOD")
+        (candidates . eldiet-example-candidates-list)
+        (action . (lambda (candidate )
+                    (helm-marked-candidates)))))
+
+
 (defun eldiet-init ()
   "Check that files specified by user exist."
   (mapc (lambda (file)
 	  (unless (f-file? file)
 	    (user-error "eldiet file %s could not be found." file)))))
 
-(setq eldiet-example-candidates-list '(("Milk" . ("3.5" "1.5" "5.0"))))
 
-(setq helm-source-eldiet
-      '((name . "FOOD")
-	(candidates . eldiet-example-candidates-list)
-	(action . (lambda (candidate )
-		    (helm-marked-candidates)))))
+
 
 
 (defun eldiet-select-food ()
