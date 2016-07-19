@@ -50,28 +50,22 @@ files were last parsed.")
 
 (setq helm-source-eldiet
       '((name . "FOOD")
-        (candidates . eldiet-example-candidates-list)
+        (candidates . eldiet-parse-org-database)
         (action . (lambda (candidate )
                     (helm-marked-candidates)))))
 
 
-(defun eldiet-init ()
-  "Check that files specified by user exist."
-  (mapc (lambda (file)
-	  (unless (f-file? file)
-	    (user-error "eldiet file %s could not be found." file)))))
-
-
-
-
-
+	  
 (defun eldiet-select-food ()
   "The helm dialog you can select the food for a meal from."
   (interactive)
   (insert
    (mapconcat 'identity
    (helm :sources '(helm-source-eldiet) :buffer "*helm eldiet select food*")
-   ",")))
+   ","))
+  (unless (f-file? file)
+    (user-error "eldiet file %s could not be found." file))
+)
 
 ;;; Experimental
 (define-minor-mode eldiet-capture-mode
