@@ -48,6 +48,10 @@ files were last parsed.")
      (org-element-parse-buffer 'headline)))
 
 
+(defun eldiet-digest-org-tree ()
+  "Returns a list of plists for each food from the database."
+  (eldiet-parse-org-database eldiet-database))
+
 (setq helm-source-eldiet
       '((name . "FOOD")
         (candidates . eldiet-parse-org-database)

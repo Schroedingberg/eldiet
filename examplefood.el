@@ -1,0 +1,21 @@
+'(:name "Tofu"
+:PROTEIN 20
+:FAT 1
+:CARBOHYDRATES 3
+:ENERGY 150
+)
+
+'(:name "Broccholi"
+:PROTEIN 3
+:FAT 0
+:CARBOHYDRATES 1
+:ENERGY: 90
+)
+
+'(
+:name "Sugar"
+:PROTEIN 0
+:FAT 0
+:CARBOHYDRATES 100
+:ENERGY 450
+)
