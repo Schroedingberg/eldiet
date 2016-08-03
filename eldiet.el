@@ -45,7 +45,7 @@ files were last parsed.")
   "Parse the entries listed in eldiet-database using get-string-from-file."
   (with-temp-buffer
     (insert-file-contents filePath)
-    (org-element-parse-buffer)))
+     (org-element-parse-buffer 'headline)))
 
 
 (setq helm-source-eldiet
